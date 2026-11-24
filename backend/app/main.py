@@ -1,3 +1,4 @@
+from app.routes.chat import router as chat_router
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException
@@ -30,6 +31,7 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+app.include_router(chat_router)
 
 # Configure CORS middleware
 app.add_middleware(

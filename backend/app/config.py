@@ -23,7 +23,7 @@ class Settings:
 
         self.llm_model = os.getenv(
             "LLM_MODEL",
-            "gemini/gemini-3.1-flash-lite"
+            "gemini/gemini-3.5-flash-lite"
         )
 
         self.llm_api_base = os.getenv(

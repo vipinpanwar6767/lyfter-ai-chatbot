@@ -179,3 +179,34 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# SQLite database
+*.db
+*.db-wal
+*.db-shm
+*.sqlite3
+data/
+
+# Frontend dependencies
+node_modules/
+dist/
+.vite/
+
+# IDE configuration
+.vscode/
+
+# Logs
+*.log

@@ -81,6 +81,15 @@ def init_db():
             ON messages(session_id, id)
         """)
 
+        # Create response cache table
+        connection.execute("""
+            CREATE TABLE IF NOT EXISTS response_cache (
+            cache_key TEXT PRIMARY KEY,
+            response TEXT NOT NULL,
+            metadata TEXT NOT NULL,
+            created_at TEXT NOT NULL)
+        """)
+
 
 # Check whether the database is reachable
 def check_db():

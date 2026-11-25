@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: lyfter-backend
+    ports:
+      - "127.0.0.1:8000:8000"
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: sqlite:////data/app.db
+      ALLOWED_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+    volumes:
+      - sqlite_data:/data
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE_URL: http://localhost:8000
+    container_name: lyfter-frontend
+    ports:
+      - "127.0.0.1:3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  sqlite_data:

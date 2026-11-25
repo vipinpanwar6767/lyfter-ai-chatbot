@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+/* =========================
+   GLOBAL THEME VARIABLES
+========================= */
+
+:root {
+  --bg-primary: #080d16;
+  --bg-sidebar: #0f1b30;
+  --bg-navigation: #0b1729;
+  --bg-card: #15243b;
+
+  --accent-blue: #3b82f6;
+  --accent-cyan: #06b6d4;
+
+  --border-color: #263b56;
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+}
+
+/* =========================
+   GLOBAL RESET
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+button {
+  cursor: pointer;
+}
+
+/* =========================
+   AURORA BACKGROUND
+========================= */
+
+.aurora-background {
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.aurora-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 85% 10%,
+      rgba(37, 99, 235, 0.35),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 10% 85%,
+      rgba(6, 182, 212, 0.12),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(30, 64, 175, 0.08),
+      transparent 60%
+    );
+
+  z-index: -1;
+  pointer-events: none;
+
+  animation: aurora-glow 12s ease-in-out infinite alternate;
+}
+
+/* =========================
+   GLASS EFFECT
+========================= */
+
+.glass-panel {
+  background: rgba(15, 27, 48, 0.65);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(148, 163, 184, 0.15);
+
+  border-radius: 16px;
+}
+
+/* =========================
+   GRADIENT BUTTON
+========================= */
+
+.gradient-button {
+  background: linear-gradient(
+    135deg,
+    var(--accent-blue),
+    var(--accent-cyan)
+  );
+
+  color: white;
+  border-radius: 10px;
+
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.gradient-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 5px 25px rgba(59, 130, 246, 0.35);
+}
+
+.gradient-button:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   CUSTOM SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue);
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes aurora-glow {
+  from {
+    opacity: 0.65;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Respect accessibility preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-background::before {
+    animation: none;
+  }
+
+  .gradient-button {
+    transition: none;
+  }
+
+  .gradient-button:hover {
+    transform: none;
+  }
+}
+
+/* AI Markdown response styling */
+
+.markdown-content {
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.markdown-content p {
+  margin-bottom: 12px;
+}
+
+.markdown-content p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  color: #f1f5f9;
+  font-weight: 700;
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+
+.markdown-content h1 {
+  font-size: 24px;
+}
+
+.markdown-content h2 {
+  font-size: 20px;
+}
+
+.markdown-content h3 {
+  font-size: 17px;
+}
+
+.markdown-content strong {
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.markdown-content ul {
+  list-style-type: disc;
+  padding-left: 24px;
+  margin-bottom: 12px;
+}
+
+.markdown-content ol {
+  list-style-type: decimal;
+  padding-left: 24px;
+  margin-bottom: 12px;
+}
+
+.markdown-content li {
+  margin-bottom: 6px;
+}
+
+.markdown-content code {
+  background: #0f172a;
+  color: #67e8f9;
+  padding: 3px 6px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.markdown-content pre {
+  background: #080f1c;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 14px 0;
+  overflow-x: auto;
+}
+
+.markdown-content pre code {
+  background: transparent;
+  padding: 0;
+  color: #cbd5e1;
+}
+
+.markdown-content blockquote {
+  border-left: 3px solid #06b6d4;
+  padding-left: 14px;
+  color: #94a3b8;
+  margin: 12px 0;
+}
+
+.markdown-content a {
+  color: #22d3ee;
+  text-decoration: underline;
+}
+
+.markdown-content table {
+  display: block;
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  margin: 14px 0;
+}
+
+.markdown-content th,
+.markdown-content td {
+  border: 1px solid #334155;
+  padding: 10px;
+  text-align: left;
+}
+
+.markdown-content th {
+  background: #1e293b;
+  color: #f1f5f9;
+}
